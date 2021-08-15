@@ -65,19 +65,16 @@ public class TaskManager {
             numbers.add(Integer.parseInt(inputValue));
         }
 
-        List<Integer> sortedNumbers = new ArrayList();
-        sortedNumbers.addAll(numbers);
-
-        for (int item = 0; item < sortedNumbers.toArray().length; item++) {
-            for (int subItem = 0; subItem < sortedNumbers.toArray().length; subItem++) {
+        for (int item = 0; item < numbers.toArray().length; item++) {
+            for (int subItem = 0; subItem < numbers.toArray().length; subItem++) {
                 if (item == subItem) continue;
-                if (sortedNumbers.get(item).equals(sortedNumbers.get(subItem))) {
-                    sortedNumbers.remove(item);
+                if (numbers.get(item).equals(numbers.get(subItem))) {
+                    numbers.remove(item);
                 }
             }
         }
 
-        sortedNumbers.remove(sortedNumbers.indexOf(sortedNumbers.stream().min(Integer::compare).get()));
-        return sortedNumbers.stream().min(Integer::compare).get();
+        numbers.remove(numbers.indexOf(numbers.stream().min(Integer::compare).get()));
+        return numbers.stream().min(Integer::compare).get();
     }
 }
